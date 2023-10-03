@@ -1,22 +1,17 @@
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
+const mongoose = require('mongoose');
+const validator = require('validator');
 const { Schema } = mongoose;
-
-export const Roles = {
-    User: "ROLE_USER",
-    Admin: "ROLE_ADMIN"
-}
 
 const userSchema = new Schema({
     username: {
-        type: String,
-        required: true,
-        unique: true,
-        validate: (value) => validator.isEmail(value)
+    type: String,
+    required: true,
+    unique: true,
+    // validate: (value) => {
+    //   return validator.validate(value);
     },
     password: String,
-    // role: Roles
-}, )
+}, {__v: false})
 
-const user = mongoose.model('user', userSchema);
-
-export default user;
+module.exports =  mongoose.model('User', userSchema);

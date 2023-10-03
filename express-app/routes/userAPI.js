@@ -1,4 +1,3 @@
-
 const express = require('express');
 const User = require('../models/user');
 
@@ -6,10 +5,7 @@ const router = express.Router();
 var bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
-router.get('/', function(req, res, next) {
-    res.status(200).json({'greeting': "Hello", 'lucky_num': 3}).send();
-})
-
+// Get all users
 router.get('/user', jsonParser, function(req, res) {
     const users = User.find().then((doc) => {
         console.log(doc);
@@ -17,7 +13,8 @@ router.get('/user', jsonParser, function(req, res) {
     }).catch((err) => res.status(400).json(err));
 })
 
-router.post('/user', jsonParser, function(req, res, next) {
+// Create new user
+router.post('/user', jsonParser, function(req, res) {
     const user = req.body;
     const newUser = new User(user);
     console.log(req.body);
@@ -30,4 +27,21 @@ router.post('/user', jsonParser, function(req, res, next) {
         res.status(400).json({message: "Cannot create another user with this username"});
     });
 })
+
+// Sign in and authenticate user. Request body should have username and password
+router.post('/auth', jsonParser, function(req, res) {
+    const user = req.body
+    User.findOne(user).then((doc) => {
+        if (doc) {
+            console.log(doc);
+            res.status(200).json({
+                                    _id: doc._id,
+                                    username: doc.username
+                                });
+        } else {
+            res.status(404).json("User with these credentials was not found");
+        }
+    }).catch((err) => res.status(400).json(err));
+})
+
 module.exports = router;

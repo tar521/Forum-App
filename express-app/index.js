@@ -4,12 +4,14 @@ const cors = require('cors');
 const CONNECTION_URL = 'mongodb://127.0.0.1:27017/forum_app_db';
 
 var testRoutes = require('./routes/testAPI');
+var userRoutes = require('./routes/userAPI');
 
 const app = express();
 const PORT = 8080;
 app.use(cors());
 
 app.use('/testAPI', testRoutes);
+app.use('/', userRoutes);
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
