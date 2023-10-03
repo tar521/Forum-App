@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the container takes at least the full viewport height */
+  margin: 50px;
+}
+.logout{
+  text-align: left;
+  margin-bottom: 10px;
+}
+.forum-container {
+  min-height: 500px;
+  padding: 0;
+}
