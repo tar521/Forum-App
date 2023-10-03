@@ -1,0 +1,10 @@
+.forum-container {
+  min-height: 500px;
+  padding: 0;
+}
+.directory-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the container takes at least the full viewport height */
+  margin: 50px;
+}
