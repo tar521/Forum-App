@@ -1,15 +1,8 @@
-var express = require("express");
-var router = express.Router();
+const express = require('express');
+const getTest = require('../controllers/testAPIController.js')
 
-router.get("/", function(req, res, next) {
-    res.send("API is working properly");
-});
+const router = express.Router();
 
-router.get("/health", (request, response) => {
-    const status = {
-        "status": "Running"
-    };
-    response.send(status);
-})
+router.get('/', getTest)
 
-module.exports = router;
+export default router;
