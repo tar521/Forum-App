@@ -5,8 +5,8 @@ const CONNECTION_URL = 'mongodb://127.0.0.1:27017/forum_app_db';
 
 var testRoutes = require('./routes/testAPI');
 
-const app = express()
-const PORT = 8080
+const app = express();
+const PORT = 8080;
 app.use(cors());
 
 app.use('/testAPI', testRoutes);
