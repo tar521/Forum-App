@@ -1,20 +1,25 @@
 {
   "name": "express-app",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "sequelize-cli": "^6.6.1"
   },
   "dependencies": {
-    "ajv": "^8.12.0",
-    "cookie-parser": "~1.4.4",
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
-    "morgan": "~1.9.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.5.3",
+    "mongoose-sequence": "^5.3.1",
+    "mysql2": "^3.6.1",
     "sequelize": "^6.33.0",
-    "sqlite3": "^5.1.6"
+    "validator": "^13.11.0"
   }
 }

@@ -1,0 +1,76 @@
+.login-container {
+    display:flex;
+    flex-direction:row;
+    background-color: lightgray;
+    float:right;
+    width: 40%;
+    height: 100vh;
+  }
+  
+  .login-container h1 { 
+    color:lightblue;
+    -webkit-text-stroke-color: navy;
+    -webkit-text-stroke-width: 2px;
+    margin-left: 2vw;
+    padding:10px;
+    margin-top: 15vh;
+    font-size: 60px;
+    width:35vw;
+    font-weight: bold;
+  }
+
+  .login-container p {
+    position: fixed;
+    bottom: 2vh;
+    left: 65vw;
+  }
+  
+  .login-image-container img{
+    position:absolute;
+    top: 10vh;
+    left:10vw;
+    width: 75vh;
+    height: 75vh;
+  }
+  
+  .login{
+    justify-content: center;
+  }
+  
+  .login button {
+    margin-left: 50px;
+    background-color: rgba(0, 0, 0, 0.26);
+    border: 2px solid black;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    margin-top: 5vh;
+  }
+  
+  .login button:hover {
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid rgb(255, 255, 255, 1);
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .loginbox label {
+    margin-left: 4vw;
+    margin-top: 5vh;
+    font-size: 30px;
+    font-weight: bold;
+    color: lightblue;
+    -webkit-text-stroke-color: navy;
+    -webkit-text-stroke-width: 1px;
+  }
+  
+  .loginbox input {
+    width:250px;
+    height: 20px;
+    margin-bottom: 10px;
+    margin-left: 75px;
+  }  
