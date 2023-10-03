@@ -1,0 +1,72 @@
+.signup-container{
+    display:flex;
+    flex-direction:row;
+    background-color: lightgray;
+    width: 40%;
+    height: 100vh;
+}
+
+.left-bar h1 {
+    color: lightblue;
+    -webkit-text-stroke-color: navy;
+    -webkit-text-stroke-width: 2px;
+    float: center;
+    padding:10px;
+    margin-left: 2vw;
+    margin-top: 20vh;
+    margin-bottom: 10px;
+    font-size: 60px;
+    font-weight: bold;
+    width:35vw;
+}
+
+.labelbox label {
+    font-size: 30px;
+    font-weight:bold;
+    -webkit-text-stroke-color: navy;
+    -webkit-text-stroke-width: 1px;
+    color: lightblue;
+}
+
+.labelbox input {
+    float:center;
+    width:250px;
+    height: 20px;
+}
+
+.buttonsection{
+    display:inline;
+    margin-left: -4vw;
+}
+
+.buttonsection button{
+    background-color: rgba(0, 0, 0, 0.26);
+    border: 2px solid black;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 24px;
+    width: 200px;
+    margin-left: 4vw;
+    margin-top: 20px;
+}
+
+.buttonsection button:hover {
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid rgb(255, 255, 255, 1);
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+.signup-image img{
+    position: absolute;
+    left: 50vw;
+    top: 15vh;
+    width: 75vh;
+    height: 75vh;
+}
+
+
