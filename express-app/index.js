@@ -1,14 +1,17 @@
 const express = require('express')
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose)
 const cors = require('cors');
 const CONNECTION_URL = 'mongodb://127.0.0.1:27017/forum_app_db';
 
 var testRoutes = require('./routes/testAPI');
+var threadRoutes = require('./routes/threadRoute');
 
 const app = express()
 const PORT = 8080
 app.use(cors());
 
+app.use('/thread', threadRoutes);
 app.use('/testAPI', testRoutes);
 app.get("/", (req, res) => {
   res.send("Hello World!");
