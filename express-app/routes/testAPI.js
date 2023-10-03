@@ -1,8 +1,10 @@
 const express = require('express');
-const getTest = require('../controllers/testAPIController.js')
+
 
 const router = express.Router();
 
-router.get('/', getTest)
+router.get('/', function(req, res, next) {
+    res.status(200).json({'greeting': "Hello", 'lucky_num': 3}).send();
+})
 
-export default router;
+module.exports = router;

@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const CONNECTION_URL = 'mongodb://127.0.0.1:27017/forum_app_db';
 
-const testRoutes = require('./routes/posts.js');
+var testRoutes = require('./routes/testAPI');
 
 const app = express()
-const port = 8080
+const PORT = 8080
 app.use(cors());
 
 app.use('/testAPI', testRoutes);
