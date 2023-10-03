@@ -1,0 +1,6 @@
+.rowHeader{
+    border: 1px solid lightgray;
+    background-color: lightgray;
+    padding: 10px; 
+    font-weight: 700;
+}

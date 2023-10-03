@@ -5,12 +5,15 @@ import Signup from './components/Signup/Signup';
 import Directory from './components/Directory/Directory';
 import Thread from './components/Thread/Thread';
 import { Route, Routes } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 function App() {
   return (
+    
     <div className="App">
       <Routes>
-        <Route path='/' element={<Landing/>}/>     
+        <Route path='/' element={<Thread/>}/>     
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/directory' element={<Directory/>}/>
@@ -21,3 +24,6 @@ function App() {
 }
 
 export default App;
+    // <NewPostForm onAddPost={handleAddPost} />
+    // <PostList posts={posts} />
+    //landing-containe
