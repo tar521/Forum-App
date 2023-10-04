@@ -5,7 +5,6 @@ import image from './img.jpg';
 
 const Signup = () => {
 
-  const [email,setEmail] = useState("");
   const [username,setUsername] = useState("");
   const [password,setPassword] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -13,14 +12,41 @@ const Signup = () => {
 
   const handleSubmit = async () => {
 
-      //this logic will be updated when the back end is ready for it.
-      if (username != "" && password != "" && email != "") {
+    const requestObject =
+    {
+      "username": username,
+      "password": password,
+    }
+
+    if(!username || !password) {
+      setSuccessMessage("");
+      setErrorMessage("Sign up failed. Please check your information.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:8080/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestObject),
+      });
+
+      if (response.ok) {
         setSuccessMessage("Sign up successful. You can now log in.");
         setErrorMessage("");
+      } else if(response.status === 400){
+        setSuccessMessage("");
+        setErrorMessage("Sign up failed. User already exists in database.");
       } else {
         setSuccessMessage("");
         setErrorMessage("Sign up failed. Please check your information.");
       }
+    } catch (error) {
+      setSuccessMessage("");
+      setErrorMessage("An error occurred. Please try again later.");
+    }
 
   }
 
@@ -30,11 +56,6 @@ const Signup = () => {
       <div className="left-bar">
 
         <h1>Create an Account</h1>
-
-        <div className="labelbox">
-          <label for="email">E-mail</label><br/>
-          <input type="text" id="email" name="email"  onChange={(e) => setEmail(e.target.value)}/>
-        </div>
 
         <div className="labelbox">
           <label for="username">Username</label><br/>
