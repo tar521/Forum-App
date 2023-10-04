@@ -7,7 +7,6 @@ import Thread from './components/Thread/Thread';
 import { Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import DiscussionForum from './DiscussionForum';
 
 function App() {
   return (
@@ -18,7 +17,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/directory' element={<Directory/>}/>
-        <Route path='/discussion' element={<DiscussionForum/>}/>
+        <Route path='/thread' element={<Thread/>}/>
       </Routes>
     </div>
   );

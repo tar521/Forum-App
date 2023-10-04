@@ -12,14 +12,36 @@ const Login = () => {
   const navigate = useNavigate();
   
   const handleLogin = async () => {
-    //logic will be updated when the back end is ready.
-    if (username != "" && password != "") {
-      localStorage.setItem("username", username);
-      navigate( "/directory");
-    } else {
+    
+    const requestObject =
+    {
+      "username": username,
+      "password": password,
+    }
+
+    try {
+      const response = await fetch("http://localhost:8080/auth", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestObject),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        //const { jwt } = data;
+        //localStorage.setItem("jwtToken", jwt);
+        navigate( "/directory");
+      } else {
+        setSuccessMessage("");
+        console.log(response);
+        setErrorMessage("Login failed. Please check your information.");
+      }
+    } catch (error) {
       setSuccessMessage("");
-      setErrorMessage("Login failed. Please check your information.");
-    }  
+      setErrorMessage("An error occurred. Please try again later.");
+    }
 
   }
 
