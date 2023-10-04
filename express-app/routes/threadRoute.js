@@ -7,7 +7,7 @@ const jsonParser = bodyParser.json();
 router.get('/', function(req, res, next) {
     ThreadObj.find().then((docs) => {
         if(docs) {
-            res.status(200).json(docs).send();
+            res.status(200).json(docs);
         } else {
             throw new Error;
         }
@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
 router.post('/test', jsonParser, function(req, res, next) {
     ThreadObj.findOne({_id: req.body._id}).then((docs) => {
         if(docs) {
-            res.status(200).json(docs).send();
+            res.status(200).json(docs);
         } else {
             throw new Error;
         }
@@ -33,7 +33,7 @@ router.post('/', jsonParser, function(req, res, next) {
     const newThread = new ThreadObj(reqBody);
 
     newThread.save().then((doc) => {
-        res.status(201).json(doc).send();
+        res.status(201).json(doc);
         console.log(doc)
     }).catch((err) => {
         res.status(400).json({ message: err.message});
@@ -46,7 +46,7 @@ router.put('/', jsonParser, function(req, res, next) {
     ThreadObj.updateOne({_id: req.body._id}, {
         $push: { replies: reply.reply}
     }).then((doc) => {
-        res.status(200).json(doc).send();
+        res.status(200).json(doc);
         console.log(doc)
     }).catch((err) => {
         res.status(400).json({ message: err.message});
