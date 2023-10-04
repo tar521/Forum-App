@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const autoIncrementModelID = require('./counterModel');
 
 const threadSchema = new mongoose.Schema({
-    thread_id: {type: Number, unique: true, min: 1},
     title: String,
     author: String,
     content: String,
