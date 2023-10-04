@@ -70,7 +70,7 @@ const Thread = () => {
                        
 
               <Row>
-                <Collapse in={open}>
+                <Collapse style={{display: 'none'}}>
                   <div id={thread._id}>
                     <Replies 
                       replies={thread.replies} 
