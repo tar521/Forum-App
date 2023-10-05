@@ -6,7 +6,7 @@ const Landing = () => {
   return (
     <div className="landing-container">
       <div className="text-container">
-        <h1>[PH] forum app</h1>
+        <h1>[OH{'\u207B'}] forum app</h1>
       </div>
 
       <div className="image-container">
