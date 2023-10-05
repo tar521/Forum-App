@@ -13,7 +13,8 @@ const Login = ({ setIsLoggedIn }) => {
   const {  login, updateUser} = useAuth();
 
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
     const requestObject = {
       username: username,
       password: password,
@@ -73,7 +74,7 @@ const Login = ({ setIsLoggedIn }) => {
         </div>
 
         <div className="login">
-          <button onClick={handleLogin}>Login</button>
+        <button onClick={(e) => handleLogin(e)}>Login</button>
           <a href="http://localhost:3000/">
             <button>Back to Home</button>
           </a>
