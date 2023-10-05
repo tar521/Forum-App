@@ -6,10 +6,10 @@ import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import Directory from "./components/Directory/Directory";
 import Thread from "./components/Thread/Thread";
-import { Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import AuthContextProvider from "./service/AuthContextProvider";
+import Create from "./components/Create/Create";
 
 function App() {
   const [isLoggedIn] = useState(false);
