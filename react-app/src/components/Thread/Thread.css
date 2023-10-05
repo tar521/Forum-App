@@ -50,3 +50,12 @@
   margin: 0 !important;
   
 }
+.nowrap-button {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 150px;
+  height: 50px;
+  margin:0;
+  padding:0;
+}

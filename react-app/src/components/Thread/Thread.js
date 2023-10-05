@@ -12,22 +12,14 @@ import { useAuth } from "../../service/AuthContextProvider";
 import { useNavigate } from "react-router-dom";
 
 const Thread = () => {
-  const sampleDate = "2023-10-02";
-  const sampleTime = "14:30:00";
-  const { user } = useAuth();
   const navigate = useNavigate();
-
   const [openThreads, setOpenThreads] = useState({});
   const [rowData, setRowData] = useState([]);
-  //console.log(rowData);
-
-  const handleCreateNewThread = () => {
-    navigate("/create");
-  };
+  const [selectedThreadId, setSelectedThreadId] = useState(null);
 
   useEffect(() => {
     getAllThreads()
-      .then((data) => setRowData(data))
+      .then((data) => setRowData(data.reverse())) // Reverse the rowData array
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
@@ -46,11 +38,7 @@ const Thread = () => {
           <Accordion.Body>
             <Container fluid className="child">
               <Row className="new-thread">
-                <Button
-                  onClick={() => handleCreateNewThread()}
-                >
-                  New Thread
-                </Button>
+                <Button onClick={() => navigate("/create")}>New Thread</Button>
               </Row>
               <Row className="rowHeader">
                 <Col md={1} className="col1">
@@ -59,44 +47,64 @@ const Thread = () => {
                 <Col md={2} className="col2">
                   Title
                 </Col>
-                <Col md={7} className="col2">
+                <Col md={6} className="col2">
                   Thread
                 </Col>
-
                 <Col md={1} className="col4">
                   Replies
                 </Col>
-                <Col md={1} className="col4"></Col>
+                <Col md={2} className="col4"></Col>{" "}
               </Row>
-              {rowData.reverse().map((thread) => (
+              {rowData.map((thread) => (
                 <>
                   <Row className="rowThread" id={`collapse${thread._id}`}>
                     <Col md={1}>{thread.author}</Col>
                     <Col md={2}>{thread.title}</Col>
-                    <Col md={7}>{thread.content}</Col>
+                    <Col md={6}>{thread.content}</Col>
                     <Col md={1}>{thread.replies.length}</Col>
-                    <Col md={1}>
-                      <Button
-                        onClick={handleCreateNewThread}
-                        aria-controls={`collapse${thread._id}`}
-                        aria-expanded={openThreads[thread._id]}
-                        className="btn-link no-hover"
-                      >
-                        {openThreads[thread._id] ? "Hide" : "View"}
-                      </Button>
+                    <Col md={2}>
+                      {thread.replies.length === 0 ? (
+                        // If there are no replies, show "New Reply" button
+                        <Button
+                          onClick={() =>
+                            navigate("/reply", {
+                              state: { selectedThreadId: thread._id },
+                            })
+                          }
+                          className="btn-link no-hover nowrap-button"
+                        >
+                          New Reply
+                        </Button>
+                      ) : (
+                        // If there are replies, show "View" button
+                        <Button
+                          onClick={() => toggleThread(thread._id)}
+                          aria-controls={`collapse${thread._id}`}
+                          aria-expanded={openThreads[thread._id]}
+                          className="btn-link no-hover nowrap-button"
+                        >
+                          {openThreads[thread._id] ? "Hide" : "View"}
+                        </Button>
+                      )}
                     </Col>
                   </Row>
 
-                  <Row>
-                    <Collapse
-                      in={openThreads[thread._id]}
-                      id={`collapse${thread._id}`}
-                    >
-                      <div id={`replies-collapse-text-${thread._id}`}>
-                        <Replies replies={thread.replies} key={thread._id} />
-                      </div>
-                    </Collapse>
-                  </Row>
+                  {thread.replies.length > 0 && (
+                    <Row>
+                      <Collapse
+                        in={openThreads[thread._id]}
+                        id={`collapse${thread._id}`}
+                      >
+                        <div id={`replies-collapse-text-${thread._id}`}>
+                          <Replies
+                            replies={thread.replies}
+                            thread={thread}
+                            key={thread._id}
+                          />
+                        </div>
+                      </Collapse>
+                    </Row>
+                  )}
                 </>
               ))}
             </Container>
