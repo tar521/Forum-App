@@ -7,11 +7,15 @@ import Collapse from "react-bootstrap/Collapse";
 import Replies from "./Replies";
 import { formatDate, formatTime } from "../../service/DateTimeFormatter";
 import "./Thread.css";
-import { getAllThreads } from "../../service/ThreadAPI";
+import { getAllThreads, createNewThread } from "../../service/ThreadAPI";
+import { useAuth } from "../../service/AuthContextProvider"; // Import useAuth hook
+
+
 
 const Thread = () => {
   const sampleDate = "2023-10-02";
   const sampleTime = "14:30:00";
+  const {  user } = useAuth();
 
   const [openThreads, setOpenThreads] = useState({});
   const [rowData, setRowData] = useState([]);
@@ -30,6 +34,17 @@ const Thread = () => {
     }));
   };
 
+  const handleCreateNewThread = () => {
+    const newThreadData = {
+      title: "TEST THREAD # 4",
+      author: user.username,
+      content: "Man, it really is a lovely day",
+    };
+    createNewThread(newThreadData).then((newThread) => {
+      setRowData((prevData) => [...prevData, newThread]);
+    });
+  };
+
   return (
     <div className="thread-container">
       <Accordion defaultActiveKey="0">
@@ -38,7 +53,7 @@ const Thread = () => {
           <Accordion.Body>
             <Container fluid className="child">
               <Row className="new-thread">
-                <Button onClick="" className="btn-link no-hover ">
+                <Button onClick={handleCreateNewThread} className="btn-link no-hover ">
                   New Thread
                 </Button>
               </Row>
