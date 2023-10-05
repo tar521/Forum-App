@@ -1,9 +1,8 @@
-// APIService.js
-
 import axios from 'axios';
 
 const GETALLTHREADS_URL = "http://localhost:8080/thread";
 const CREATENEWTHREAD_URL = "http://localhost:8080/thread";
+const PUTNEWREPLY_URL = "http://localhost:8080/thread";
 
 export const getAllThreads = async () => {
     try {
@@ -23,5 +22,15 @@ export const getAllThreads = async () => {
       console.error('Error posting data:', error);
       throw error;
     }
+  };
 
+    export const createNewReply = async (formData) => {
+      try {
+        console.log(formData);
+        const response = await axios.put(PUTNEWREPLY_URL, formData);
+        return response.data;
+      } catch (error) {
+        console.error('Error posting data:', error);
+        throw error;
+      }
   };

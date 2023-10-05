@@ -5,9 +5,19 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { formatDate, formatTime } from "../../service/DateTimeFormatter";
 import { getAllThreads } from "../../service/ThreadAPI";
+import { useNavigate } from "react-router-dom";
 
 const Replies = (props) => {
-  const replies = props.replies;
+  const navigate = useNavigate();
+  const { replies, thread } = props;
+
+  const handleCreateNewReply = () => {
+    if (thread && thread._id) {
+      navigate("/reply", {
+        state: { selectedThreadId: thread._id },
+      });
+    }
+  };
 
   return (
     <div className="thread-container">
@@ -23,7 +33,10 @@ const Replies = (props) => {
                 </Row>
               ))}
               <Row className="new-thread">
-                <Button onClick="" className="btn-link no-hover ">
+                <Button
+                  className="btn-link no-hover nowrap-button"
+                  onClick={handleCreateNewReply}
+                >
                   New Reply
                 </Button>
               </Row>
