@@ -39,7 +39,7 @@ router.post('/auth', jsonParser, function(req, res) {
                                     username: doc.username
                                 });
         } else {
-            res.status(404).json("User with these credentials was not found");
+            res.status(400).json("User with these credentials was not found");
         }
     }).catch((err) => res.status(400).json(err));
 })

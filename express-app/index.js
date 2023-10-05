@@ -27,3 +27,5 @@ async function connectToDB() {
   }
 }
 connectToDB();
+
+module.exports = app;
