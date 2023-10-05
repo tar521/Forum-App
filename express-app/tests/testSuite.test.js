@@ -165,4 +165,23 @@ afterEach(async () => {
         })
     })
 
+    describe('DELETE /user/:username', () => {
+        it("should delete the user by id", async () => {
+            const res = await request(app).post('/user')
+                        .send({
+                            username: "John",
+                            password: "Doe"
+                        });
+            expect(res.statusCode).toBe(201);
+            expect(res.body.username).toBe('John');
+            expect(res.body.password).toBe('Doe');
+
+            const res3 = await request(app).delete('/user/' + res.body.username);
+
+            expect(res3.statusCode).toBe(200);
+            expect(res3.body.acknowledged).toBe(true);
+            expect(res3.body.deletedCount).toBe(1);
+        })
+    })
+
 module.exports = app;
