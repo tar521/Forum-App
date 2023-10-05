@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Route, Routes } from 'react-router-dom';
 import "./App.css";
 import Landing from "./components/Landing/Landing";
 import Login from "./components/Login/Login";
@@ -23,6 +23,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/directory" element={<Directory />} />
           <Route path="/thread" element={<Thread />} />
+          <Route path='/create' element={<Create/>}/>
         </Routes>
       </AuthContextProvider>
     </div>
