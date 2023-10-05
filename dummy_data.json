@@ -1,0 +1,86 @@
+db.threads.insertMany([
+	{
+		"title": "Favorite dog breeds",
+		"author": "doglover01",
+		"content": "I have a German Shepard and I love him so much.",
+		"replies": [
+			{
+				"author": "someuser2",
+				"content": "I agree! I have had two of them and will never have a different dog."
+			},
+			{
+				"author": "germanshepard",
+				"content": "Are you talking about me?"
+			},
+			{
+				"author": "dog_owner",
+				"content": "Who wants to go outside? @germanshepard"
+			},
+			{
+				"author": "germanshepard",
+				"content": "OUTSIDE, OUTSIDE"
+			}
+		]
+	},
+	{
+		"title": "This is better than social media!",
+		"author": "someuser2",
+		"content": "I am so happy that my data isn't being shared.",
+		"replies": [
+			{
+				"author": "doglover01",
+				"content": "And its not toxic and full of scams!"
+			},
+			{
+				"author": "dog_owner",
+				"content": "Try my knew product, AcneBgone. It will clear your skin instantly! Click here: www.acnebgone.scam"
+			},
+			{
+				"author": "germanshepard",
+				"content": "woof"
+			}
+		]
+	},
+	{
+		"title": "Conspiracy Theories",
+		"author": "dog_owner",
+		"content": "Have you heard of the conspiracy theory?",
+		"replies": [
+			{
+				"author": "doglover01",
+				"content": "Oh I know the conspiracy theory. It's the conpiracy theory, yes?"
+			},
+			{
+				"author": "dog_owner",
+				"content": "Yes, it is the conspiracy theory! Someone who understands me!"
+			},
+			{
+				"author": "someuser2",
+				"content": "I am behind the conspiracy..."
+			},
+			{
+				"author": "germanshepard",
+				"content": "asdflkjhlh7921354098ksd,.mbhGRKL:JIUH"
+			}
+		]
+	}
+]);
+
+db.users.insertMany([
+	{
+		"username": "dog_owner",
+		"password": "password",
+	},
+	{
+		"username": "germanshepard",
+		"password": "password",
+	},
+	{
+		"username": "someuser2",
+		"password": "password",
+	},
+	{
+		"username": "doglover01",
+		"password": "password",
+	}
+])
