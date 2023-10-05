@@ -7,7 +7,6 @@ import { formatDate, formatTime } from "../../service/DateTimeFormatter";
 import { getAllThreads } from "../../service/ThreadAPI";
 
 const Replies = (props) => {
-  console.log(props.replies);
   const replies = props.replies;
 
   return (
