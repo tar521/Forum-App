@@ -39,7 +39,7 @@ afterEach(async () => {
   });
 
 
-  describe("POST /thread", () => {
+  describe("POST /thread & DELETE /thread", () => {
     it("should create a thread", async () => {
       const res = await request(app).post("/thread").send({
         title: "TEST THREAD API",
@@ -55,6 +55,13 @@ afterEach(async () => {
       
       expect(res.statusCode).toBe(201);
       expect(res.body.title).toBe("TEST THREAD API");
+
+      const res2 = (await request(app).delete("/thread")).send({
+        _id: res.body._id
+      });
+
+      expect(res2.statusCode).toBe(200);
+
     });
     });
 
@@ -76,3 +83,9 @@ afterEach(async () => {
             expect(res.body.matchedCount).toBe(1);
         });
     });
+
+    const res2 = (await request(app).delete("/thread")).send({
+        _id: res.body._id
+      });
+
+      expect(res2.statusCode).toBe(200);
