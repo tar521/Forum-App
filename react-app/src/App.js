@@ -23,7 +23,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/directory" element={<Directory />} />
           <Route path="/thread" element={<Thread />} />
-          <Route path='/Create' element={<Create/>}/>
+          <Route path='/create' element={<Create/>}/>
         </Routes>
       </AuthContextProvider>
     </div>
