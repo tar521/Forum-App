@@ -53,5 +53,16 @@ router.put('/', jsonParser, function(req, res, next) {
     })
 });
 
+// Delete thread by id
+router.delete('/', jsonParser, function(req, res, next) {
+    const deleteId = req.body;
+
+    ThreadObj.deleteOne({_id: req.body._id}).then((doc) => {
+        res.status(200).json(doc);
+    }).catch((err) => {
+        res.status(400).json({ message: err.message});
+    })
+})
+
 
 module.exports = router;
