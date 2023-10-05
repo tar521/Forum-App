@@ -31,6 +31,4 @@ function App() {
 }
 
 export default App;
-// <NewPostForm onAddPost={handleAddPost} />
-// <PostList posts={posts} />
-//landing-containe
+
