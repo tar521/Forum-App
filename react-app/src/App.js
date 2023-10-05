@@ -10,6 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import AuthContextProvider from "./service/AuthContextProvider";
 import Create from "./components/Create/Create";
+import Reply from "./components/Reply/Reply";
 
 function App() {
   const [isLoggedIn] = useState(false);
@@ -24,6 +25,7 @@ function App() {
           <Route path="/directory" element={<Directory />} />
           <Route path="/thread" element={<Thread />} />
           <Route path='/create' element={<Create/>}/>
+          <Route path='/reply' element={<Reply/>}/>
         </Routes>
       </AuthContextProvider>
     </div>
